@@ -17,6 +17,8 @@
     <!-- Custom CSS -->
     <link href="<?php echo URL ?>css/sb-admin-2.min.css" rel="stylesheet">
 
+    <link href="<?php echo URL ?>css/metisMenu.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="<?php echo URL ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -35,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Rodeo Skateboard</a>
+                <a class="navbar-brand" href="<?php URL ?>home">Rodeo Skateboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -111,7 +113,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -123,19 +125,34 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
+                        <li>
+                            <a href="<?php URL ?>usuarios"><i class="fa fa-users fa-fw"></i>  Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php URL ?>usuarios/edit">Registrar</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Cancion</a>
+                            <a href="<?php URL ?>usuarios"><i class="fa fa-truck fa-fw"></i>  Pedidos</a>
+                        </li>
+                        <li>
+                            <a href="<?php URL ?>usuarios"><i class="fa fa-plus fa-fw"></i>  Entradas</a>
+                        </li>
+                        <li>
+                            <a href="<?php URL ?>usuarios"><i class="fa fa-cubes fa-fw"></i>  Productos</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="blank.html">Blank Page</a>
+                                </li>
+                                <li>
+                                    <a href="login.html">Login Page</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                     </ul>
                 </div>

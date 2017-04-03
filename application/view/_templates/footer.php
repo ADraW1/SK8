@@ -1,4 +1,5 @@
 </div>
+
 </div>
 <!-- /#wrapper -->
 <script>
@@ -13,6 +14,8 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="<?php echo URL;?>js/sb-admin-2.js"></script>
+
+<script src="<?php echo URL;?>js/metisMenu.js"></script>
 
 <!-- our JavaScript -->
 <script src="<?php echo URL;?>js/application.js"></script>
