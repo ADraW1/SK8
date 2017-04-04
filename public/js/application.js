@@ -10,13 +10,28 @@ function cambiarEstado(cod,est) {
     data:{id:cod,estado:est}
   }).done(function(respuesta){
     if (respuesta.v==1) {
-      alert("si");
       location.href=uri+"usuarios/index";
     }else {
       alert("no");
     }
   }).fail(function() {
 
-  })
+});
+}
 
+function cambiarEstadoProducto(cod,est) {
+  $.ajax({
+    dataType:'json',
+    type:'post',
+    url:uri+"productos/modificarEstado",
+    data:{id:cod,estado:est}
+  }).done(function(respuesta){
+    if (respuesta.v==1) {
+      location.href=uri+"productos/index";
+    }else {
+      alert("no");
+    }
+  }).fail(function() {
+
+});
 }

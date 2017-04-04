@@ -1,45 +1,66 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Usuarios</h1>
-            <div class='table-responsive'>
-                <table class='table table-hover'>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-icon" data-background-color="blue">
+            <i class="material-icons">person</i>
+        </div>
+        <h4 class="card-title">Usuarios</h4>
+        <div class="card-content">
+            <div class="table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Documento</th>
-                            <th>Tipo Documento</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
-                            <th>Contraseña</th>
-                            <th>Telefono Fijo</th>
-                            <th>Telefono Movil</th>
-                            <th>Direccion</th>
-                            <th>Estado</th>
-                            <th>Rol</th>
-                            <th>Accion</th>
+                            <th class="text-center">Documento</th>
+                            <th class="text-center">Tipo Documento</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Apellido</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Telefono Fijo</th>
+                            <th class="text-center">Telefono Movil</th>
+                            <th class="text-center">Direccion</th>
+                            <th class="text-center">Estado</th>
+                            <th class="text-center">Rol</th>
+                            <th class="text-center">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($datos as $value) : ?>
                         <tr>
-                            <td><?= $value["documento"] ?></td>
-                            <td><?= $value["nom_tipo"] ?></td>
-                            <td><?= $value["nombres"] ?></td>
-                            <td><?= $value["apellidos"] ?></td>
-                            <td><?= $value["email"] ?></td>
-                            <td><?= $value["contrasena"] ?></td>
-                            <td><?= $value["telefonoFijo"] ?></td>
-                            <td><?= $value["telefonoMovil"] ?></td>
-                            <td><?= $value["direccion"] ?></td>
-                            <td><?= $value["estado"]==1?"Activo":"Inactivo" ?></td>
-                            <td><?= $value["rol"] ?></td>
-                            <td>
-                                <a class="btn btn-warning" href="<?= URL ?>usuarios/edit/<?= $value['documento']?>"><i class="fa fa-pencil fa-lg"></i></a>
+                            <td class="text-center">
+                                <?= $value["documento"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["nom_tipo"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["nombres"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["apellidos"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["email"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["telefonoFijo"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["telefonoMovil"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["direccion"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["estado"]==1?"Activo":"Inactivo" ?>
+                            </td>
+                            <td class="text-center">
+                                <?= $value["rol"] ?>
+                            </td>
+                            <td class="td-actions text-center">
+                                <a class="btn btn-info" href="<?= URL ?>usuarios/edit/<?= $value['documento']?>"><i class="material-icons">edit</i></a>
                                 <?php if ($value["estado"]==1) {?>
-                                <a class="btn btn-danger" href="#" onclick="cambiarEstado(<?= $value['documento']?>,0)"><i class="fa fa-times fa-lg"></i></a>
+                                <a class="btn btn-danger" href="#" onclick="cambiarEstado(<?= $value['documento']?>,0)"><i class="material-icons">close</i></a>
                                 <?php  }else{ ?>
-                                <a class="btn btn-success" href="#" onclick="cambiarEstado(<?= $value['documento']?>,1)"><i class="fa fa-check fa-lg"></i></a>
+                                <a class="btn btn-success" href="#" onclick="cambiarEstado(<?= $value['documento']?>,1)"><i class="material-icons">check</i></a>
                                 <?php } ?>
                             </td>
                         </tr>

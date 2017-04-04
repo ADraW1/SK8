@@ -1,56 +1,85 @@
-<div class="container-fluid animated fadeIn">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Usuario</h1>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <h1>Modificar Usuario</h1>
-        <form action="<?= URL?>usuarios/modificar" method="post">
-
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="documento" placeholder="Documento" value="<?= $datos["documento"] ?>">
+<div class="col-md-12">
+   <div class="card">
+      <form id="RegisterValidation" action="<?= URL?>usuarios/modificar" method="post">
+         <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">edit</i>
+         </div>
+         <div class="form-group label-floating card-content">
+            <h4 class="card-title">Modificar persona</h4>
+            <div class="col-md-6">
+               <select class="selectpicker" data-style="select-with-transition" multiple title="Tipo de Identificacion" data-size="7">
+                  <option disabled>Desactia</option>
+                  <option value="2">Cedula </option>
+                  <option value="3">Tarjeta de identidad</option>
+               </select>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="tipoDoc" placeholder="Documento" value="<?= $datos["tb_TipoDocumento_id_TipoDocumento"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Documento
+               <small>*</small>
+               </label>
+               <input class="form-control" name="documento" type="text" required="true" value="<?= $datos["documento"] ?>">
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="nombre" placeholder="Documento" value="<?= $datos["nombres"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Nombre
+               <small>*</small>
+               </label>
+               <input class="form-control" name="nombre" type="text" required="true" value="<?= $datos["nombres"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="apellido" placeholder="Documento" value="<?= $datos["apellido_1"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Apellido
+               <small>*</small>
+               </label>
+               <input class="form-control" name="apellido" type="text" required="true" value="<?= $datos["apellido_1"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="email" placeholder="Documento" value="<?= $datos["email"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Email
+               <small>*</small>
+               </label>
+               <input class="form-control" name="email" type="email" email="true" value="<?= $datos["email"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="contrasena" placeholder="Documento" value="<?= $datos["contrasena"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Contraseña
+               <small>*</small>
+               </label>
+               <input class="form-control" name="contrasena" id="registerPassword" type="password" required="true" value="<?= $datos["contrasena"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="telfijo" placeholder="Documento" value="<?= $datos["telefonoFijo"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Telefono Fijo
+               <small>*</small>
+               </label>
+               <input class="form-control" type="text" name="number" number="true" value="<?= $datos["telefonoFijo"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="telmovil" placeholder="Documento" value="<?= $datos["telefonoMovil"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Telefono Movil
+               <small>*</small>
+               </label>
+               <input class="form-control" type="text" name="number" number="true" value="<?= $datos["telefonoMovil"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="direc" placeholder="Documento" value="<?= $datos["direccion"] ?>">
+            <div class="form-group label-floating col-md-6">
+               <label class="control-label">
+               Direccion
+               <small>*</small>
+               </label>
+               <input class="form-control" name="apellido" type="text" required="true" value="<?= $datos["direccion"] ?>"/>
             </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon"><i class="fa fa-address-card" style="width: 15px;"></i></span>
-                <input type="text" class="form-control" name="rol" placeholder="Documento" value="<?= $datos["tb_Rol_id_rol"] ?>">
+            <div class="col-md-6">
+               <select class="selectpicker" data-style="select-with-transition" multiple title="Rol" data-size="7">
+                  <option disabled></option>
+                  <option value="2">Cedula </option>
+                  <option value="3">Tarjeta de identidad</option>
+               </select>
             </div>
-            <div class="form-group input-group">
-                <button type="submit" class="form-control">Modificar</button>
+            <div class="form-footer text-right">
+               <button type="submit" class="btn btn-rose btn-fill">Modificar</button>
             </div>
-        </form>
-    </div>
+         </div>
+      </form>
+   </div>
 </div>

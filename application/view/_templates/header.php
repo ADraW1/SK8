@@ -1,164 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="es">
 
 <head>
+    <meta charset="utf-8" />
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>SK8-Rodeo Skateboard</title>
+    <title>Rodeo Skateboard</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo URL ?>css/bootstrap.css" rel="stylesheet">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
-    <!-- Custom CSS -->
-    <link href="<?php echo URL ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="<?php echo URL;?>css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="<?php echo URL;?>css/material-dashboard.css" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="<?php echo URL;?>css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="<?php echo URL;?>font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="<?php echo URL ?>css/metisMenu.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?php echo URL ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
 </head>
 
 <body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<?php URL ?>home">Rodeo Skateboard</a>
+    <div class="wrapper">
+        <div class="sidebar" data-active-color="red" data-background-color="black" data-image="<?php echo URL;?>img/sidebar-4.jpg">
+            <!--
+        Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+        Tip 2: you can also add an image using data-image tag
+        Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Rodeo Skateboard
+                </a>
             </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="<?php URL ?>usuarios"><i class="fa fa-users fa-fw"></i>  Usuarios<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+            <div class="logo logo-mini">
+                <a href="#" class="simple-text">
+                    RD
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <div class="user">
+                    <div class="photo">
+                        <img src="<?php echo URL;?>img/faces/avatar.jpg" />
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            Juan David Cardenas
+                            <b class="caret"></b>
+                        </a>
+                        <div class="collapse" id="collapseExample">
+                            <ul class="nav">
                                 <li>
-                                    <a href="<?php URL ?>usuarios/edit">Registrar</a>
+                                    <a href="#">Mi perfil</a>
+                                </li>
+                                <li>
+                                    <a href="#">Editar perfil</a>
+                                </li>
+                                <li>
+                                    <a href="#">Configuraciones</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="<?php URL ?>usuarios"><i class="fa fa-truck fa-fw"></i>  Pedidos</a>
-                        </li>
-                        <li>
-                            <a href="<?php URL ?>usuarios"><i class="fa fa-plus fa-fw"></i>  Entradas</a>
-                        </li>
-                        <li>
-                            <a href="<?php URL ?>usuarios"><i class="fa fa-cubes fa-fw"></i>  Productos</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+                <ul class="nav">
+                    <li class="active">
+                        <a href="<?php echo URL;?>home">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#usuarios">
+                            <i class="material-icons">person</i>
+                            <p>Usuarios
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="usuarios">
+                            <ul class="nav">
+                                <li>
+                                    <a href="<?php echo URL;?>usuarios">Consultar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#productos">
+                            <i class="material-icons">local_mall</i>
+                            <p>Productos
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="productos">
+                            <ul class="nav">
+                                <li>
+                                    <a href="<?php echo URL;?>productos">Consultar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URL;?>productos/add.php">Ingresar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#entradas">
+                            <i class="material-icons">add</i>
+                            <p>Entradas
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="entradas">
+                            <ul class="nav">
+                                <li>
+                                    <a href="./components/buttons.html">Consultar</a>
+                                </li>
 
-        <div id="page-wrapper">
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                        </button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"> Dashboard </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">notifications</i>
+                                    <span class="notification">5</span>
+                                    <p class="hidden-lg hidden-md">
+                                        Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">Mike John responded to your email</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">You have 5 new tasks</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">You're now friend with Andrew</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Another Notification</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Another One</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">person</i>
+                                    <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
+                            <li class="separator hidden-lg hidden-md"></li>
+                        </ul>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group form-search is-empty">
+                                <input type="text" class="form-control" placeholder="Buscar">
+                                <span class="material-input"></span>
+                            </div>
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
