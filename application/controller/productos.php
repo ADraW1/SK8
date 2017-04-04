@@ -13,18 +13,12 @@ class Productos extends Controller
   public function index()
   {
     $datos = $this->mdlProductos->listar();
+    $sub=$this->mdlProductos->conSubCate();
     include APP."view/_templates/header.php";
     include APP."view/productos/index.php";
     include APP."view/_templates/footer.php";
   }
 
-  public function add()
-  {
-    include APP."view/_templates/header.php";
-    include APP."view/productos/add.php";
-    include APP."view/_templates/footer.php";
-  }
-  
   public function modificarEstado()
   {
     $this->mdlProductos->__SET("idProducto", $_POST["id"]);

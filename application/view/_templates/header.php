@@ -39,7 +39,7 @@
             </div>
             <div class="logo logo-mini">
                 <a href="#" class="simple-text">
-                    RD
+                    RS
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -75,53 +75,22 @@
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#usuarios">
+                      <a href="<?php echo URL;?>usuarios">
                             <i class="material-icons">person</i>
-                            <p>Usuarios
-                                <b class="caret"></b>
-                            </p>
+                            <p>Usuarios</p>
                         </a>
-                        <div class="collapse" id="usuarios">
-                            <ul class="nav">
-                                <li>
-                                    <a href="<?php echo URL;?>usuarios">Consultar</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#productos">
+                      <a href="<?php echo URL;?>productos">
                             <i class="material-icons">local_mall</i>
-                            <p>Productos
-                                <b class="caret"></b>
-                            </p>
+                            <p>Productos</p>
                         </a>
-                        <div class="collapse" id="productos">
-                            <ul class="nav">
-                                <li>
-                                    <a href="<?php echo URL;?>productos">Consultar</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URL;?>productos/add.php">Ingresar</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#entradas">
+                      <a href="<?php echo URL;?>entradas">
                             <i class="material-icons">add</i>
-                            <p>Entradas
-                                <b class="caret"></b>
-                            </p>
+                            <p>Entradas</p>
                         </a>
-                        <div class="collapse" id="entradas">
-                            <ul class="nav">
-                                <li>
-                                    <a href="./components/buttons.html">Consultar</a>
-                                </li>
-
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </div>

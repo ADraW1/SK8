@@ -75,10 +75,10 @@
    <div class="card">
       <form id="RegisterValidation" action="<?= URL?>productos/insertarProducto" method="post">
          <div class="card-header card-header-icon" data-background-color="rose">
-            <i class="material-icons">edit</i>
+            <i class="material-icons">add</i>
          </div>
          <div class="form-group label-floating card-content">
-            <h4 class="card-title">Modificar persona</h4>
+            <h4 class="card-title">Ingresar productos</h4>
 
             <div class="form-group label-floating col-md-6">
                <label class="control-label">
@@ -116,16 +116,42 @@
             </div>
 
             <div class="col-md-6">
-               <select class="selectpicker" data-style="select-with-transition" multiple title="Categoria" data-size="10">
-                  <option disabled></option>
-                  <option value="2">Cedula </option>
-                  <option value="3">Tarjeta de identidad</option>
-               </select>
+              <select class="selectpicker" data-style="select-with-transition" title="Sub Categoria">
+                 <?php foreach ($sub as $key):?>
+                   <option value="<?= $key['id_sub'] ?>"><?=$key['nombre'];?></option>
+                 <?php  endforeach ?>
+              </select>
             </div>
 
             <div class="form-footer text-right">
                <button type="submit" class="btn btn-rose btn-fill">Modificar</button>
             </div>
+         </div>
+      </form>
+   </div>
+</div>
+<div class="col-md-6">
+   <div class="card">
+      <form id="RegisterValidation" action="<?= URL?>productos/insertarProducto" method="post">
+         <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">add</i>
+         </div>
+         <div class="form-group label-floating card-content">
+           <h4 class="card-title">Ingresar Marca</h4>
+
+         </div>
+      </form>
+   </div>
+</div>
+<div class="col-md-6">
+   <div class="card">
+      <form id="RegisterValidation" action="<?= URL?>productos/insertarProducto" method="post">
+         <div class="card-header card-header-icon" data-background-color="rose">
+            <i class="material-icons">add</i>
+         </div>
+         <div class="form-group label-floating card-content">
+           <h4 class="card-title">Ingresar Talla</h4>
+
          </div>
       </form>
    </div>

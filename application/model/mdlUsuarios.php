@@ -44,6 +44,39 @@ class mdlUsuarios
     return $stm->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function insertarUsuario()
+  {
+    $sql="CALL reg_usuario(?,?,?,?,?,?,?,?,?,?)";
+    $stm=$this->db->prepare($sql);
+    $stm->bindParam(1,$this->Documento);
+    $stm->bindParam(2,$this->tipoDocumento);
+    $stm->bindParam(3,$this->Nombre);
+    $stm->bindParam(4,$this->Apellido);
+    $stm->bindParam(5,$this->Email);
+    $stm->bindParam(6,$this->Constrasena);
+    $stm->bindParam(7,$this->telefonoFijo);
+    $stm->bindParam(8,$this->telefonoMovil);
+    $stm->bindParam(9,$this->Direccion);
+    $stm->bindParam(10,$this->Rol);
+    return $stm->execute();
+  }
+
+  public function tipoDocumento()
+  {
+    $sql="SELECT id_TipoDocumento,nom_TipoDocumento FROM tb_tipodocumento";
+    $stm=$this->db->prepare($sql);
+    $stm->execute();
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function conRol()
+  {
+    $sql="SELECT id_rol,nom_rol FROM tb_rol";
+    $stm=$this->db->prepare($sql);
+    $stm->execute();
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function modificar()
   {
     $query="CALL mod_usuario(?,?,?,?,?,?,?,?,?,?)";

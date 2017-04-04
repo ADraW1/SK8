@@ -40,6 +40,14 @@ class mdlProductos
     return $stm->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function conSubCate()
+  {
+    $sql="SELECT id_sub,nombre FROM tb_sub_cate";
+    $stm=$this->db->prepare($sql);
+    $stm->execute();
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function insertarProducto()
   {
     $sql="CALL reg_producto(?,?,?,?,?,?,?)";
