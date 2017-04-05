@@ -10,7 +10,7 @@ function cambiarEstado(cod,est) {
     data:{id:cod,estado:est}
   }).done(function(respuesta){
     if (respuesta.v==1) {
-      location.href=uri+"usuarios/index";
+      location.href=uri+"usuarios";
     }else {
       alert("no");
     }
@@ -27,7 +27,7 @@ function cambiarEstadoProducto(cod,est) {
     data:{id:cod,estado:est}
   }).done(function(respuesta){
     if (respuesta.v==1) {
-      location.href=uri+"productos/index";
+      location.href=uri+"productos";
     }else {
       alert("no");
     }

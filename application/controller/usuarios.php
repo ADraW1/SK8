@@ -34,15 +34,16 @@ class Usuarios extends Controller
           $this->mdlUsuarios->__SET("Rol", $_POST["rol"]);
           $very=$this->mdlUsuarios->insertarUsuario();
           // where to go after song has been added
-          header('location: ' . URL . 'usuarios/index');
+          header('location: ' . URL . 'usuarios');
         }
-
     }
 
   public function edit($id)
   {
     $this->mdlUsuarios->__SET("Documento",$id);
     $datos=$this->mdlUsuarios->consultarUno();
+    $tdoc = $this->mdlUsuarios->tipoDocumento();
+    $rol=$this->mdlUsuarios->conRol();
     include APP."view/_templates/header.php";
     include APP."view/usuarios/edit.php";
     include APP."view/_templates/footer.php";
@@ -50,18 +51,20 @@ class Usuarios extends Controller
 
   public function modificar()
   {
-    $this->mdlUsuarios->__SET("Documento", $_POST["documento"]);
-    $this->mdlUsuarios->__SET("tipoDocumento", $_POST["tipoDoc"]);
-    $this->mdlUsuarios->__SET("Nombre", $_POST["nombre"]);
-    $this->mdlUsuarios->__SET("Apellido", $_POST["apellido"]);
-    $this->mdlUsuarios->__SET("Email", $_POST["email"]);
-    $this->mdlUsuarios->__SET("Constrasena", $_POST["contrasena"]);
-    $this->mdlUsuarios->__SET("telefonoFijo", $_POST["telfijo"]);
-    $this->mdlUsuarios->__SET("telefonoMovil", $_POST["telmovil"]);
-    $this->mdlUsuarios->__SET("Direccion", $_POST["direc"]);
-    $this->mdlUsuarios->__SET("Rol", $_POST["rol"]);
-    $very=$this->mdlUsuarios->modificar();
-    header("location:".URL."usuarios/index");
+    if (isset($_POST["updateUsuario"])) {
+      $this->mdlUsuarios->__SET("Documento", $_POST["documento"]);
+      $this->mdlUsuarios->__SET("tipoDocumento", $_POST["tipoDoc"]);
+      $this->mdlUsuarios->__SET("Nombre", $_POST["nombre"]);
+      $this->mdlUsuarios->__SET("Apellido", $_POST["apellido"]);
+      $this->mdlUsuarios->__SET("Email", $_POST["email"]);
+      $this->mdlUsuarios->__SET("Constrasena", $_POST["contrasena"]);
+      $this->mdlUsuarios->__SET("telefonoFijo", $_POST["telfijo"]);
+      $this->mdlUsuarios->__SET("telefonoMovil", $_POST["telmovil"]);
+      $this->mdlUsuarios->__SET("Direccion", $_POST["direc"]);
+      $this->mdlUsuarios->__SET("Rol", $_POST["rol"]);
+      $very=$this->mdlUsuarios->modificar();
+      header("location:".URL."usuarios");
+    }
   }
 
   public function modificarEstado()

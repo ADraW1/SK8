@@ -38,7 +38,7 @@ class mdlUsuarios
 
   public function listar()
   {
-    $sql="CALL con_usuario()";
+    $sql="CALL con_usuario_todo()";
     $stm=$this->db->prepare($sql);
     $stm->execute();
     return $stm->fetchAll(PDO::FETCH_ASSOC);

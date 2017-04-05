@@ -7,10 +7,10 @@
          <div class="form-group label-floating card-content">
             <h4 class="card-title">Modificar persona</h4>
             <div class="col-md-6">
-               <select class="selectpicker" data-style="select-with-transition" multiple title="Tipo de Identificacion" data-size="7">
-                  <option disabled>Desactia</option>
-                  <option value="2">Cedula </option>
-                  <option value="3">Tarjeta de identidad</option>
+               <select class="selectpicker" data-style="select-with-transition" title="Tipo de Identificacion" name="tipoDoc">
+                  <?php foreach ($tdoc as $key): ?>
+                    <option value="<?= $key['id_TipoDocumento'] ?>"><?=$key['nom_TipoDocumento'];?></option>
+                 <?php endforeach ?>
                </select>
             </div>
             <div class="form-group label-floating col-md-6">
@@ -53,31 +53,31 @@
                Telefono Fijo
                <small>*</small>
                </label>
-               <input class="form-control" type="text" name="number" number="true" value="<?= $datos["telefonoFijo"] ?>"/>
+               <input class="form-control" type="text" name="telfijo" number="true" value="<?= $datos["telefonoFijo"] ?>"/>
             </div>
             <div class="form-group label-floating col-md-6">
                <label class="control-label">
                Telefono Movil
                <small>*</small>
                </label>
-               <input class="form-control" type="text" name="number" number="true" value="<?= $datos["telefonoMovil"] ?>"/>
+               <input class="form-control" type="text" name="telmovil" number="true" value="<?= $datos["telefonoMovil"] ?>"/>
             </div>
             <div class="form-group label-floating col-md-6">
                <label class="control-label">
                Direccion
                <small>*</small>
                </label>
-               <input class="form-control" name="apellido" type="text" required="true" value="<?= $datos["direccion"] ?>"/>
+               <input class="form-control" name="direc" type="text" required="true" value="<?= $datos["direccion"] ?>"/>
             </div>
             <div class="col-md-6">
-               <select class="selectpicker" data-style="select-with-transition" multiple title="Rol" data-size="7">
-                  <option disabled></option>
-                  <option value="2">Cedula </option>
-                  <option value="3">Tarjeta de identidad</option>
+               <select class="selectpicker" data-style="select-with-transition" title="Rol" name="rol">
+                  <?php foreach ($rol as $key):?>
+                    <option value="<?= $key['id_rol'] ?>"><?=$key['nom_rol'];?></option>
+                  <?php  endforeach ?>
                </select>
             </div>
             <div class="form-footer text-right">
-               <button type="submit" class="btn btn-rose btn-fill">Modificar</button>
+               <button type="submit" class="btn btn-rose btn-fill" name="updateUsuario">Modificar</button>
             </div>
          </div>
       </form>

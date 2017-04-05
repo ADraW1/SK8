@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-04-2017 a las 19:05:42
+-- Tiempo de generación: 05-04-2017 a las 04:56:33
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -30,6 +30,12 @@ SELECT p.nom_categoria,p.id_Categoria from tb_categoria p JOIN tb_sub_cate sb on
 CREATE DEFINER=`root`@`localhost` PROCEDURE `con_cat_talla` (IN `id_talla` INT, IN `id_cat` INT)  NO SQL
 SELECT * from tb_categoria_has_tb_tallas ct where ct.id_cat_tall=id_talla AND ct.tb_categoria_id_Categoria=id_cat$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `con_entrada_todo` ()  NO SQL
+select e.id_entradas id,e.cantidad,e.fecha_entrada,p.nom_proveedor,pr.nombre
+from tb_entrada e
+join tb_proovedor p ON e.fk_proveedor = p.id_Proovedor
+join tb_producto pr ON e.fk_producto = pr.id_Producto$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `con_marca` (IN `id` INT)  NO SQL
 SELECT cm.tb_marca_id_Marca id_marca,m.nom_marca FROM tb_categoria_has_tb_marca cm join tb_categoria c on c.id_Categoria=cm.tb_categoria_id_Categoria join tb_marca m on m.id_Marca=cm.tb_marca_id_Marca where cm.tb_categoria_id_Categoria=id$$
 
@@ -42,11 +48,11 @@ select p.id_Producto id,p.nombre,p.stockMinimo stock,p.precio,p.estado_producto 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `con_talla` (IN `id` INT)  NO SQL
 SELECT ct.tb_tallas_idtallas id_talla,t.nombre nom_talla FROM tb_categoria_has_tb_tallas ct join tb_categoria c on c.id_Categoria=ct.tb_categoria_id_Categoria join tb_tallas t on t.idtallas=ct.tb_tallas_idtallas where ct.tb_categoria_id_Categoria=id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `con_usuario` ()  NO SQL
-SELECT u.documento,tp.nom_TipoDocumento nom_tipo,u.nombres,u.apellido_1 apellidos,u.email,u.contrasena,u.telefonoFijo,u.telefonoMovil,u.direccion,u.estado,r.nom_rol rol FROM tb_usuario u JOIN tb_tipodocumento tp on tp.id_TipoDocumento = u.tb_TipoDocumento_id_TipoDocumento JOIN tb_rol r on r.id_rol=u.tb_Rol_id_rol$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `con_usuario_todo` (IN `id` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `con_usuario` (IN `id` INT)  NO SQL
 SELECT u.documento,tp.nom_TipoDocumento nom_tipo,u.nombres,u.apellido_1 apellidos,u.email,u.contrasena,u.telefonoFijo,u.telefonoMovil,u.direccion,u.estado,r.nom_rol rol FROM tb_usuario u JOIN tb_tipodocumento tp on tp.id_TipoDocumento = u.tb_TipoDocumento_id_TipoDocumento JOIN tb_rol r on r.id_rol=u.tb_Rol_id_rol where u.documento=id$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `con_usuario_todo` ()  NO SQL
+SELECT u.documento,tp.nom_TipoDocumento nom_tipo,u.nombres,u.apellido_1 apellidos,u.email,u.contrasena,u.telefonoFijo,u.telefonoMovil,u.direccion,u.estado,r.nom_rol rol FROM tb_usuario u JOIN tb_tipodocumento tp on tp.id_TipoDocumento = u.tb_TipoDocumento_id_TipoDocumento JOIN tb_rol r on r.id_rol=u.tb_Rol_id_rol$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_cant` (IN `id` INT, IN `cant` INT)  NO SQL
 update tb_producto set cantidad=cantidad + cant where id_Producto = id$$
@@ -60,15 +66,15 @@ UPDATE tb_usuario u SET u.estado=estado where u.documento=doc$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mod_producto` (IN `id` INT, IN `nombre` VARCHAR(25), IN `stock` INT, IN `precio` INT, IN `estado` BOOLEAN, IN `cantidad` INT, IN `categoria` INT, IN `img` VARCHAR(100))  NO SQL
 UPDATE tb_producto p SET nombre = nombre, stockMinimo = stock, precio = precio, estado_producto = estado, cantidad = cantidad,p.tb_categoria_has_tb_tallas_id_cat_tall = categoria, imagen = img WHERE id_Producto = id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `mod_usuario` (IN `doc` VARCHAR(20), IN `tipdoc` INT, IN `nom` VARCHAR(45), IN `apell` VARCHAR(45), IN `email` VARCHAR(45), IN `pass` VARCHAR(45), IN `telF` VARCHAR(20), IN `telM` VARCHAR(20), IN `direcc` VARCHAR(20), IN `est` TINYINT(1), IN `rol` INT)  NO SQL
-update tb_usuario set tb_TipoDocumento_id_TipoDocumento=tipdoc, nombres=nom,apellido_1=apell,email=email, contrasena=pass, telefonoFijo=telF,telefonoMovil=telM,direccion=direcc,estado=est,tb_Rol_id_rol=rol where documento=doc$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mod_usuario` (IN `doc` VARCHAR(20), IN `tipdoc` INT, IN `nom` VARCHAR(45), IN `apell` VARCHAR(45), IN `email` VARCHAR(45), IN `pass` VARCHAR(45), IN `telF` VARCHAR(20), IN `telM` VARCHAR(20), IN `direcc` VARCHAR(20), IN `rol` INT)  NO SQL
+update tb_usuario set tb_TipoDocumento_id_TipoDocumento=tipdoc, nombres=nom,apellido_1=apell,email=email, contrasena=pass, telefonoFijo=telF,telefonoMovil=telM,direccion=direcc,tb_Rol_id_rol=rol where documento=doc$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_entrada` (IN `id` INT, IN `cant` INT, IN `fecha` DATETIME, IN `id_prod` INT, IN `id_proveedor` INT)  NO SQL
 insert into  tb_entradas
 values(null,cant,null,id_prod, id_proveedor)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_producto` (IN `nombre` VARCHAR(25), IN `precio` INT, IN `cantidad` INT, IN `img` VARCHAR(100), IN `id_cat_tal_mar` INT)  NO SQL
-INSERT INTO tb_producto (nombre,precio,cantidad,imagen,tb_categoria_has_tb_tallas_id_cat_tall) VALUES (nombre, precio, cantidad, img, id_cat_tal_mar)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_producto` (IN `nombre` VARCHAR(25), IN `precio` INT, IN `img` VARCHAR(100), IN `id_cat_tal_mar` INT)  NO SQL
+INSERT INTO tb_producto (nombre,precio,imagen,tb_categoria_has_tb_tallas_id_cat_tall) VALUES (nombre, precio, img, id_cat_tal_mar)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_usuario` (IN `id` VARCHAR(20), IN `tipo` INT, IN `nomb` VARCHAR(45) CHARSET utf8, IN `ape` VARCHAR(45) CHARSET utf8, IN `email` VARCHAR(45) CHARSET utf8, IN `pass` VARCHAR(45) CHARSET utf8, IN `telf` VARCHAR(45) CHARSET utf8, IN `telm` VARCHAR(45) CHARSET utf8, IN `dir` VARCHAR(45) CHARSET utf8, IN `rol` INT)  NO SQL
 INSERT into tb_usuario (documento,tb_TipoDocumento_id_TipoDocumento,nombres,apellido_1,email,contrasena,telefonoFijo,telefonoMovil,direccion,tb_Rol_id_rol) values (id,tipo,nomb,ape,email,pass,telf,telm,dir,rol)$$
@@ -236,6 +242,13 @@ CREATE TABLE `tb_entrada` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Volcado de datos para la tabla `tb_entrada`
+--
+
+INSERT INTO `tb_entrada` (`id_entradas`, `cantidad`, `fecha_entrada`, `fk_producto`, `fk_proveedor`) VALUES
+(20, 30, '2017-04-04 21:20:24', 3, 678);
+
+--
 -- Disparadores `tb_entrada`
 --
 DELIMITER $$
@@ -320,7 +333,7 @@ CREATE TABLE `tb_producto` (
   `stockMinimo` int(11) NOT NULL DEFAULT '4',
   `precio` int(11) NOT NULL,
   `estado_producto` tinyint(1) NOT NULL DEFAULT '1',
-  `cantidad` int(11) DEFAULT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT '0',
   `imagen` varchar(200) DEFAULT NULL,
   `tb_categoria_has_tb_tallas_id_cat_tall` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -330,9 +343,11 @@ CREATE TABLE `tb_producto` (
 --
 
 INSERT INTO `tb_producto` (`id_Producto`, `nombre`, `stockMinimo`, `precio`, `estado_producto`, `cantidad`, `imagen`, `tb_categoria_has_tb_tallas_id_cat_tall`) VALUES
-(3, 'Trucks Indy', 5, 120000, 1, 10, 'Views/Container/Crud/Productos/img/', 1),
+(3, 'Trucks Indy', 5, 120000, 1, 40, 'Views/Container/Crud/Productos/img/', 1),
 (4, 'Trucks Hollow', 5, 100000, 1, 12, 'Views/Container/Crud/Productos/img/', 1),
-(5, 'Camisa Nike', 4, 80000, 1, 15, 'Views/Container/Crud/Productos/img/imgres.jpg', 2);
+(5, 'Camisa Nike', 4, 80000, 1, 15, 'Views/Container/Crud/Productos/img/imgres.jpg', 2),
+(6, 'Trucks Reynols Hollow', 4, 150000, 1, 0, '', 1),
+(8, 'Pantalon Negro', 4, 30000, 1, 0, 'sidebar-1.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -507,8 +522,9 @@ CREATE TABLE `tb_usuario` (
 --
 
 INSERT INTO `tb_usuario` (`documento`, `tb_TipoDocumento_id_TipoDocumento`, `nombres`, `apellido_1`, `email`, `contrasena`, `telefonoFijo`, `telefonoMovil`, `direccion`, `estado`, `tb_Rol_id_rol`) VALUES
-('1064657722', 1, 'Alejandro', 'Vélez Ortiz', 'avelez90@misena.edu.co', '123', '23456', '3456789876', 'itagui', 0, 1),
+('1064657722', 1, 'Amanda', 'Barrios', 'avelez90@misena.edu.co', '123', '7987988', '89789889', 'Barrio Triste', 1, 1),
 ('2222222', 1, 'Juan Esteban', 'Pulgarin', 'pulga@gmail.com', '123', '45677777', '65433333', 'San Cristobal', 1, 2),
+('345345', 2, 'Diego', 'Marin', 'diego@gmail.com', '123', '4353453', '35345345', 'Alpes', 1, 2),
 ('45645645', 4, 'Daniel', 'Agudelo', 'daniel@gmail.com', '123', '42323423', '2342534', 'Pikachu', 1, 2),
 ('54666666', 2, 'Mateo ', 'Mena', 'mena@gmail.com', '123', '222233333', '123312222', 'Altavista', 1, 2),
 ('546789234', 1, 'Adraw', 'Velez', 'adraw@gmail.com', '123', '324444', '5444444', 'Itagui', 1, 1),
@@ -719,7 +735,7 @@ ALTER TABLE `tb_detalle`
 -- AUTO_INCREMENT de la tabla `tb_entrada`
 --
 ALTER TABLE `tb_entrada`
-  MODIFY `id_entradas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_entradas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `tb_marca`
 --
@@ -739,7 +755,7 @@ ALTER TABLE `tb_plantilla`
 -- AUTO_INCREMENT de la tabla `tb_producto`
 --
 ALTER TABLE `tb_producto`
-  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `tb_promocion`
 --
