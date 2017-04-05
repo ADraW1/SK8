@@ -18,6 +18,8 @@
     <link href="<?php echo URL;?>css/material-dashboard.css" rel="stylesheet" />
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="<?php echo URL;?>css/demo.css" rel="stylesheet" />
+
+    <link href="<?php echo URL;?>css/sweetalert.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="<?php echo URL;?>font-awesome/css/font-awesome.min.css" rel="stylesheet">
 

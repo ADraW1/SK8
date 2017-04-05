@@ -33,7 +33,7 @@
 <!--  DataTables.net Plugin    -->
 <script src="<?php echo URL;?>js/jquery.datatables.js"></script>
 <!-- Sweet Alert 2 plugin -->
-<script src="<?php echo URL;?>js/sweetalert2.js"></script>
+<script src="<?php echo URL;?>js/sweetalert.min.js"></script>
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="<?php echo URL;?>js/jasny-bootstrap.min.js"></script>
 <!--  Full Calendar Plugin    -->

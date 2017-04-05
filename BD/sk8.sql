@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-04-2017 a las 04:56:33
+-- Tiempo de generación: 05-04-2017 a las 18:48:37
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -69,9 +69,9 @@ UPDATE tb_producto p SET nombre = nombre, stockMinimo = stock, precio = precio, 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mod_usuario` (IN `doc` VARCHAR(20), IN `tipdoc` INT, IN `nom` VARCHAR(45), IN `apell` VARCHAR(45), IN `email` VARCHAR(45), IN `pass` VARCHAR(45), IN `telF` VARCHAR(20), IN `telM` VARCHAR(20), IN `direcc` VARCHAR(20), IN `rol` INT)  NO SQL
 update tb_usuario set tb_TipoDocumento_id_TipoDocumento=tipdoc, nombres=nom,apellido_1=apell,email=email, contrasena=pass, telefonoFijo=telF,telefonoMovil=telM,direccion=direcc,tb_Rol_id_rol=rol where documento=doc$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_entrada` (IN `id` INT, IN `cant` INT, IN `fecha` DATETIME, IN `id_prod` INT, IN `id_proveedor` INT)  NO SQL
-insert into  tb_entradas
-values(null,cant,null,id_prod, id_proveedor)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_entrada` (IN `cant` INT, IN `id_prod` INT, IN `id_proveedor` INT)  NO SQL
+insert into tb_entrada
+values(null,cant,CURRENT_TIMESTAMP,id_prod, id_proveedor)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_producto` (IN `nombre` VARCHAR(25), IN `precio` INT, IN `img` VARCHAR(100), IN `id_cat_tal_mar` INT)  NO SQL
 INSERT INTO tb_producto (nombre,precio,imagen,tb_categoria_has_tb_tallas_id_cat_tall) VALUES (nombre, precio, img, id_cat_tal_mar)$$
@@ -246,7 +246,9 @@ CREATE TABLE `tb_entrada` (
 --
 
 INSERT INTO `tb_entrada` (`id_entradas`, `cantidad`, `fecha_entrada`, `fk_producto`, `fk_proveedor`) VALUES
-(20, 30, '2017-04-04 21:20:24', 3, 678);
+(1, 12, '2017-04-05 10:59:37', 1, 1),
+(2, 3, '2017-04-05 11:01:23', 2, 2),
+(3, 10, '2017-04-05 11:10:21', 2, 1);
 
 --
 -- Disparadores `tb_entrada`
@@ -343,11 +345,8 @@ CREATE TABLE `tb_producto` (
 --
 
 INSERT INTO `tb_producto` (`id_Producto`, `nombre`, `stockMinimo`, `precio`, `estado_producto`, `cantidad`, `imagen`, `tb_categoria_has_tb_tallas_id_cat_tall`) VALUES
-(3, 'Trucks Indy', 5, 120000, 1, 40, 'Views/Container/Crud/Productos/img/', 1),
-(4, 'Trucks Hollow', 5, 100000, 1, 12, 'Views/Container/Crud/Productos/img/', 1),
-(5, 'Camisa Nike', 4, 80000, 1, 15, 'Views/Container/Crud/Productos/img/imgres.jpg', 2),
-(6, 'Trucks Reynols Hollow', 4, 150000, 1, 0, '', 1),
-(8, 'Pantalon Negro', 4, 30000, 1, 0, 'sidebar-1.jpg', 3);
+(1, 'Trucks Indy', 4, 120000, 1, 12, 'imgres.jpg', 1),
+(2, 'Camisa Negra', 4, 40000, 1, 13, 'imgres.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -375,7 +374,7 @@ CREATE TABLE `tb_proovedor` (
   `nom_proveedor` varchar(45) DEFAULT NULL,
   `nom_contacto` varchar(45) DEFAULT NULL,
   `tel_contacto` varchar(45) DEFAULT NULL,
-  `estado_proveedor` varchar(45) DEFAULT NULL
+  `estado_proveedor` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -383,8 +382,8 @@ CREATE TABLE `tb_proovedor` (
 --
 
 INSERT INTO `tb_proovedor` (`id_Proovedor`, `nom_proveedor`, `nom_contacto`, `tel_contacto`, `estado_proveedor`) VALUES
-(678, 'cvn', 'kvndok', '7890', '1'),
-(9999, 'juan sa', 'julio', '890987', '1');
+(1, 'Soulfish', 'Andres', '3455555', 1),
+(2, 'Amateur', 'Carlos', '13344', 1);
 
 -- --------------------------------------------------------
 
@@ -523,13 +522,9 @@ CREATE TABLE `tb_usuario` (
 
 INSERT INTO `tb_usuario` (`documento`, `tb_TipoDocumento_id_TipoDocumento`, `nombres`, `apellido_1`, `email`, `contrasena`, `telefonoFijo`, `telefonoMovil`, `direccion`, `estado`, `tb_Rol_id_rol`) VALUES
 ('1064657722', 1, 'Amanda', 'Barrios', 'avelez90@misena.edu.co', '123', '7987988', '89789889', 'Barrio Triste', 1, 1),
-('2222222', 1, 'Juan Esteban', 'Pulgarin', 'pulga@gmail.com', '123', '45677777', '65433333', 'San Cristobal', 1, 2),
 ('345345', 2, 'Diego', 'Marin', 'diego@gmail.com', '123', '4353453', '35345345', 'Alpes', 1, 2),
 ('45645645', 4, 'Daniel', 'Agudelo', 'daniel@gmail.com', '123', '42323423', '2342534', 'Pikachu', 1, 2),
-('54666666', 2, 'Mateo ', 'Mena', 'mena@gmail.com', '123', '222233333', '123312222', 'Altavista', 1, 2),
 ('546789234', 1, 'Adraw', 'Velez', 'adraw@gmail.com', '123', '324444', '5444444', 'Itagui', 1, 1),
-('82374892', 1, 'Camilo', 'Rios', 'rios@gmail.com', '123', '7723642793', '239432423', 'Altavista', 1, 1),
-('888888', 1, 'Fercho', 'Marcelo', 'fer@gmail.com', '123', '345444444', '34566666', 'Pikachu', 1, 2),
 ('99042810866', 2, 'Juan David', 'Cardenas', 'cardenas@gmail.com', '123', '3178200389', '5885203', 'Rodeo Verde', 1, 2);
 
 --
@@ -735,7 +730,7 @@ ALTER TABLE `tb_detalle`
 -- AUTO_INCREMENT de la tabla `tb_entrada`
 --
 ALTER TABLE `tb_entrada`
-  MODIFY `id_entradas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_entradas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tb_marca`
 --
@@ -755,7 +750,7 @@ ALTER TABLE `tb_plantilla`
 -- AUTO_INCREMENT de la tabla `tb_producto`
 --
 ALTER TABLE `tb_producto`
-  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tb_promocion`
 --

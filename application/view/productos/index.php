@@ -25,36 +25,16 @@
                     <tbody>
                         <?php foreach ($datos as $value) : ?>
                         <tr>
-                            <td class="text-center">
-                                <?= $value["id"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["nombre"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["stock"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["precio"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["estado"]==1?"Activo":"Inactivo" ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["cantidad"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["nom_categoria"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["nom_sub"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["nom_marca"] ?>
-                            </td>
-                            <td class="text-center">
-                                <?= $value["nom_talla"] ?>
-                            </td>
+                            <td class="text-center"><?= $value["id"] ?></td>
+                            <td class="text-center"><?= $value["nombre"] ?></td>
+                            <td class="text-center"><?= $value["stock"] ?></td>
+                            <td class="text-center"><?= $value["precio"] ?></td>
+                            <td class="text-center"><?= $value["estado"]==1?"Activo":"Inactivo" ?></td>
+                            <td class="text-center"><?= $value["cantidad"] ?></td>
+                            <td class="text-center"><?= $value["nom_categoria"] ?></td>
+                            <td class="text-center"><?= $value["nom_sub"] ?></td>
+                            <td class="text-center"><?= $value["nom_marca"] ?></td>
+                            <td class="text-center"><?= $value["nom_talla"] ?></td>
                             <td class="td-actions text-center">
                                 <a class="btn btn-info" href="<?= URL ?>productos/edit/<?= $value['id']?>"><i class="material-icons">edit</i></a>
                                 <?php if ($value["estado"]==1) {?>
@@ -71,9 +51,11 @@
         </div>
     </div>
 </div>
+
 <div class="col-md-12">
     <div class="card">
-        <form id="RegisterValidation" action="<?= URL?>productos/insertarProducto" method="post">
+      <!--   -->
+        <form action="<?= URL?>productos/insertarProducto" method="post" onsubmit="return val_reg_prod()">
             <div class="card-header card-header-icon" data-background-color="rose">
                 <i class="material-icons">add</i>
             </div>
@@ -81,23 +63,16 @@
                 <h4 class="card-title">Ingresar productos</h4>
 
                 <div class="form-group label-floating col-md-6">
-                    <label class="control-label">
-               Nombre del producto
-               <small>*</small>
-               </label>
-                    <input class="form-control" name="nombre" type="text" required="true">
+                    <label class="control-label">Nombre del producto<small>*</small></label>
+                    <input class="form-control" name="nombre" type="text" id="2">
                 </div>
 
                 <div class="form-group label-floating col-md-6">
-                    <label class="control-label">
-               Precio
-               <small>*</small>
-               </label>
-                    <input class="form-control" type="text" name="precio" number="true">
+                    <label class="control-label">Precio<small>*</small></label>
+                    <input class="form-control" name="precio" type="text" id="3">
                 </div>
 
                 <div class="col-md-6 col-sm-6">
-                  <legend>Regular Image</legend>
                   <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                       <div class="fileinput-new thumbnail">
                           <img src="<?php URL ?>img/image_placeholder.jpg">
@@ -107,12 +82,12 @@
                           <span class="btn btn-rose btn-round btn-file">
                               <span class="fileinput-new">Seleccionar Imagen</span>
                               <span class="fileinput-exists">Cambiar</span>
-                              <input type="file" name="imagen" />
+                              <input type="file" name="imagen" id="4"/>
                             </span>
-                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</a>
-                          </div>
+                            <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</a>
                         </div>
-                      </div>
+                  </div>
+                </div>
 
                 <div class="col-md-6">
                     <select class="selectpicker" data-style="select-with-transition" name="8" id="8" title="Sub Categoria">
@@ -121,6 +96,7 @@
                  <?php  endforeach ?>
                     </select>
                 </div>
+
                 <script src="<?php echo URL;?>js/jquery-3.1.1.min.js" type="text/javascript"></script>
                 <script language="javascript">
                         $("#8").change(function() {
@@ -153,6 +129,7 @@
                             });
                         })
                 </script>
+
                 <script language="javascript">
                         $("#9").change(function() {
                             $("#9 option:selected").each(function() {
@@ -181,6 +158,7 @@
                 <div class="card-footer text-center">
                     <button type="submit" name="addProducto" class="btn btn-rose btn-fill">Insertar</button>
                 </div>
+
             </div>
         </form>
     </div>
@@ -196,12 +174,10 @@
                 <h4 class="card-title">Ingresar Marca</h4>
 
                 <div class="form-group label-floating">
-                    <label class="control-label">
-               Nombre de la Marca
-               <small>*</small>
-               </label>
-                    <input class="form-control" name="nombre" type="text" required="true">
+                    <label class="control-label">Nombre de la Marca<small>*</small></label>
+                    <input class="form-control" name="nombre" type="text">
                 </div>
+
                 <div class="card-footer text-center">
                     <button type="submit" name="" class="btn btn-rose btn-fill">Insertar</button>
                 </div>
@@ -220,16 +196,14 @@
                 <h4 class="card-title">Ingresar Talla</h4>
 
                   <div class="form-group label-floating">
-                      <label class="control-label">
-                 Ingrese Talla
-                 <small>*</small>
-                 </label>
-                      <input class="form-control" name="nombre" type="text" required="true">
+                      <label class="control-label">Ingrese Talla<small>*</small></label>
+                      <input class="form-control" name="nombre" type="text">
                   </div>
                 <div class="card-footer text-center">
-                    <button type="submit" name="" class="btn btn-rose btn-fill">Insertar</button>
+                    <!--<button type="button" class="btn btn-rose btn-fill" onclick="val_reg_prod()">Insertar</button>-->
                 </div>
             </div>
         </form>
     </div>
 </div>
+<script src="<?php echo URL;?>js/validaciones/val_reg_pro.js"></script>

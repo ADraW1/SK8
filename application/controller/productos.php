@@ -33,9 +33,7 @@ class Productos extends Controller
         $this->mdlProductos->__SET("CatMarTal", $key['id']);
       }
       $very=$this->mdlProductos->insertarProducto();
-
       header('location: ' . URL . 'productos');
-      // where to go after song has been added
     }
   }
 
@@ -56,9 +54,11 @@ class Productos extends Controller
     $this->mdlProductos->__SET("Categoria", $_POST["id_Categoria"]);
     $cat=$this->mdlProductos->conTalla();
 
+    $html='<option>Seleccione...</option>';
     foreach ($cat as $key ) {
-      echo "<option value=".$key['id_talla'].">".$key['nom_talla']."</option>";
+      $html.="<option value=".$key['id_talla'].">".$key['nom_talla']."</option>";
     }
+    echo $html;
   }
 
   public function conMarca()
@@ -66,9 +66,11 @@ class Productos extends Controller
     $this->mdlProductos->__SET("Categoria", $_POST["id_Categoria"]);
     $cat=$this->mdlProductos->conMarca();
 
+    $html='<option>Seleccione...</option>';
     foreach ($cat as $key ) {
-      echo "<option value=".$key['id_marca'].">".$key['nom_marca']."</option>";
+        $html.="<option value=".$key['id_marca'].">".$key['nom_marca']."</option>";
     }
+    echo $html;
   }
 
   public function modificarEstado()
@@ -81,7 +83,6 @@ class Productos extends Controller
     }else {
       echo json_encode(["v"=>0]);
     }
-
   }
 
 }
